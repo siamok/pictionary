@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Pictionary</title>
+    <title>pictionary</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,14 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render 'home/header' %>
+    <!--<p class="notice"><%= notice %></p>-->
+    <!--<p class="alert"><%= alert %></p>-->
+    <div class="container">
+      <% flash.each do |name, msg| %>
+        <%= content_tag(:div, msg, class: "alert alert-info") %>
+      <% end %>
+      <%= yield %>
+    </div>
   </body>
 </html>

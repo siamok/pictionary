@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+   <%
+=begin%>
+ <%= link_to(image_tag(@pin.image.url(:medium)), @pin.image.url, target: '_blank') if @pin.image.exists? %></br> 
+<%
+=end%>
+  <strong>Description:</strong>
+  <%= @pin.description %>
+</p>
+<% if @pin.user_id == current_user.id %>
+  <%= link_to 'Edit', edit_pin_path(@pin), class: 'btn btn-primary' %> |
+  <%= link_to 'Delete', @pin, method: :delete, data: {confirm: 'Are you sure?'},  class: 'btn btn-primary' %> | 
+<% end %>
+<%= render 'back_btn' %>
