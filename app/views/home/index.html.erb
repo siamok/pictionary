@@ -1,4 +1,10 @@
 <div class="jumbotron">
-    <%= link_to "About me", home_about_path, class: 'btn btn-default btn-lg' %>
-    <%= link_to "Main page", root_path, class: 'btn btn-primary' %>
+    <% if user_signed_in? %>
+    <%= link_to 'Edit profile', edit_user_registration_path, class: 'btn btn-primary' %>
+    <%= link_to 'New pin', new_pin_path, class: 'btn btn-primary'%>
+    <%= link_to 'Log out', destroy_user_session_path, class: 'btn btn-primary', method: :delete %>
+    <% else %>
+    <%= link_to 'Log in', new_user_session_path, class: 'btn btn-primary btn-lg' %>
+    <%= link_to 'Register', new_user_registration_path, class: 'btn btn-info' %>
+    <% end %>
 </div>

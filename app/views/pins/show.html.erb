@@ -1,16 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-   <%
-=begin%>
- <%= link_to(image_tag(@pin.image.url(:medium)), @pin.image.url, target: '_blank') if @pin.image.exists? %></br> 
-<%
-=end%>
-  <strong>Description:</strong>
-  <%= @pin.description %>
+  <div class="panel-body">
+    <div class="column"><%= image_tag(@pin.image, :size => "300x300") %></div>
+    <div class="column"><b>Description: </b><%= @pin.description %></div>
+    <div class="column"><b>Author</b>: <%#= #TODO @pins.find_by_id(@pin.user_id).nil? ? .email if %></div>
+  </div>
 </p>
-<% if @pin.user_id == current_user.id %>
+<% if @pin.user_id == current_user&.id %>
   <%= link_to 'Edit', edit_pin_path(@pin), class: 'btn btn-primary' %> |
   <%= link_to 'Delete', @pin, method: :delete, data: {confirm: 'Are you sure?'},  class: 'btn btn-primary' %> | 
 <% end %>
-<%= render 'back_btn' %>
+<%= render 'pins/shared/back_btn' %>

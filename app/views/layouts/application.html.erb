@@ -10,9 +10,7 @@
   </head>
 
   <body>
-    <%= render 'home/header' %>
-    <!--<p class="notice"><%= notice %></p>-->
-    <!--<p class="alert"><%= alert %></p>-->
+    <%= render 'home/shared/header' %>
     <div class="container">
       <% flash.each do |name, msg| %>
         <%= content_tag(:div, msg, class: "alert alert-info") %>
