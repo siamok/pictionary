@@ -2,9 +2,13 @@
 // $navbar-default-bg: #014421;
 // $body-bg:#fa9fb9;
 
-.btn-primary {
-    color: #ffffff;
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.center {
+    text-align: center;
 }
 
-@import "bootstrap-sprockets";
-@import "bootstrap"
+.left {
+    text-align: left;
+}

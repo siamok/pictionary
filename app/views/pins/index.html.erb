@@ -1,27 +1,21 @@
-<p id="notice"><%= notice %></p>
-<div class="panel panel-default">
-  <div class="panel-heading"><h2>Pins</h2></div>
-    <div class="panel-body">
-
-    <div class="container">
-      <div class="row">
-      <div class="col"><h5><b>Description</b></h5></div>
-      </div>
-      <% @pins.each do |pin| %>
-        <div class="row">
-          <div class="col-md-3 p-3"><%= pin.description %></div>
-          <div class="col-md-3 p-3"><%= image_tag(pin.image, :size => "50x50") %></div>
-          <div class="col-md-1"><%= link_to 'Show', pin, class: 'btn btn-default' %></div>
+<div id="pins" class="transitions-enabled infinite-scroll clearfix">
+  <% @pins.each do |pin| %>
+    <div class="box">
+      <div class="panel-default">
+        <%= link_to image_tag(pin.image, :size => "100xauto"), pin %> <br/>
+        <div class="panel-body">
+          <%= pin.description %> <br/>
           <% if pin.user_id == current_user&.id %>
-            <div class="col-md-1"><%= link_to 'Edit', edit_pin_path(pin), class: 'btn btn-info' %></div>
-            <div class="col-md-1"><%= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></div>
+            <div class="panel panel-footer center">
+              <%= link_to 'Edit', edit_pin_path(pin) %>
+            </div>
           <% end %>
         </div>
-      <% end %>
+      </div>
     </div>
-    
-  <br>
+  <% end %>
+</div>
 
-  <%= link_to 'New Pin', new_pin_path, class: 'btn btn-primary' %>
-  </div>
+<div class="center">
+  <%= will_paginate @pins, renderer: BootstrapPagination::Rails %>
 </div>
