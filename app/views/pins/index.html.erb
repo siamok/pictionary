@@ -6,6 +6,7 @@
         <div class="panel-body">
           <%= pin.description %> <br/>
           <br/><b>@<%= pin.user.name if pin.user %></b> <br/>
+          <%= render 'ratings/index', pin: pin %> <br/>
           <% if pin.user_id == current_user&.id %>
             <div class="panel panel-footer center">
               <%= link_to 'Edit', edit_pin_path(pin) %>

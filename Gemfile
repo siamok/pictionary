@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.0'
 gem 'rails', '~> 5.2.3'
 gem 'puma', '~> 3.11'
 gem 'sass-rails', '~> 5.0'
@@ -16,10 +15,14 @@ gem 'file_validators'
 gem 'masonry-rails', '~> 0.2.4'
 gem 'will_paginate', '~> 3.1.7'
 gem 'will_paginate-bootstrap', '~> 1.0.1'
+gem 'factory_bot'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'sqlite3'
+  gem 'rspec-rails'
+  gem 'simplecov', require: false, group: :test
+  gem 'database_cleaner-active_record'
 end
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'

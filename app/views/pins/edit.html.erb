@@ -1,6 +1,6 @@
 <h1>Editing Pin</h1>
 
 <%= render 'pins/shared/form', pin: @pin %>
-
+<div class="panel-heading center"><%= image_tag(@pin.image) %></div>
 <%= link_to 'Show', @pin %> |
 <%= render 'pins/shared/back_btn' %>
