@@ -11,9 +11,9 @@ User can rate, add (new), edit (owned), browse (all) and delete (owned) pins.
 2.7 / 5.2.3
 
 ## Configuration
-> bundle install
-> rake db:create
-> rake db:migrate
+> bundle install \
+> rake db:create \
+> rake db:migrate \
 > rails s
 
 ## Testing
