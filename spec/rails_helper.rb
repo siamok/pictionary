@@ -6,10 +6,10 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'spec_helper'
 require 'rspec/rails'
 require 'devise'
-require_relative 'support/controller_macros'
 require 'simplecov'
-require 'database_cleaner/active_record'
+require 'factory_bot_rails'
 require_relative 'support/factory_bot'
+require_relative 'support/database_cleaner'
 SimpleCov.start
 
 begin
@@ -22,11 +22,14 @@ RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.use_transactional_fixtures = false
   config.infer_spec_type_from_file_location!
-
   config.filter_rails_from_backtrace!
-  # config.include Devise::Test::ControllerHelpers, type: :controller
-  config.include Devise::TestHelpers, type: :controller
-  config.include Devise::TestHelpers, type: :view
-  config.include Devise::TestHelpers, type: :feature
-  config.extend ControllerMacros, :type => :controller
+
+  config.expect_with :rspec do |c|
+    c.syntax = :expect
+  end
+  config.include Devise::Test::IntegrationHelpers, :type => :request
+  config.include Devise::Test::ControllerHelpers, :type => :controller
+  config.include Warden::Test::Helpers
+
+  config.include Devise::TestHelpers, :type => :controller
 end

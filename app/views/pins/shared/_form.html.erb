@@ -6,15 +6,21 @@
       <% pin.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
-      <% if !pin.ratings.empty? %>
-        <% pin.ratings.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
+    </ul>
+    </div>
+  <% end %>
+    
+  <% if pin.ratings.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(pin.ratings.errors.count, "error") %> prohibited this rating from being saved:</h2>
+      <ul>
+      <% pin.ratings.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
-
+    
   <div classvalidatable="field">
     <%= form.label :description %>
     <%= form.text_field :description %>

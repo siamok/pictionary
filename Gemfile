@@ -15,7 +15,7 @@ gem 'file_validators'
 gem 'masonry-rails', '~> 0.2.4'
 gem 'will_paginate', '~> 3.1.7'
 gem 'will_paginate-bootstrap', '~> 1.0.1'
-gem 'factory_bot'
+gem 'factory_bot_rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -23,6 +23,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'simplecov', require: false, group: :test
   gem 'database_cleaner-active_record'
+  gem 'rails-controller-testing'
 end
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
